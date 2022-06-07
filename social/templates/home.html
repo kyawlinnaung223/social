@@ -6,6 +6,14 @@
           <title>Document</title>
 </head>
 <body>
-          <h1>homepage</h1>
+          {% for listthing in listthings %}
+          <a href="{% url 'listthing_retrieve' listthing.id %}"><h1>{{listthing.title}}</h1></a>
+          <h1>{{listthing.price}}</h1>
+          <h1>{{listthing.num_bedroom}}</h1>
+          <h1>{{listthing.num_bathroom}}</h1>
+          <h1>{{listthing.square_footage}}</h1>
+          <h1>{{listthing.address}}</h1>
+
+          {% endfor %}
 </body>
 </html>
