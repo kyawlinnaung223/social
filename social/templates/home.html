@@ -6,7 +6,10 @@
           <title>Document</title>
 </head>
 <body>
+          <a href="{% url 'list_createpage' %}">+Create|</a>
+          
           {% for listthing in listthings %}
+          <a href="{% url 'list_updatepage' listthing.id %}">+Eidt|</a>
           <a href="{% url 'listthing_retrieve' listthing.id %}"><h1>{{listthing.title}}</h1></a>
           <h1>{{listthing.price}}</h1>
           <h1>{{listthing.num_bedroom}}</h1>
