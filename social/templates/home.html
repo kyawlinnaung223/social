@@ -1,22 +1,42 @@
+{% load static %}
 <html lang="en">
 <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css/' %}">
+    <title>Navbar</title>
 </head>
 <body>
-          <a href="{% url 'list_createpage' %}">+Create|</a>
-          
-          {% for listthing in listthings %}
-          <a href="{% url 'list_updatepage' listthing.id %}">+Eidt|</a>
-          <a href="{% url 'listthing_retrieve' listthing.id %}"><h1>{{listthing.title}}</h1></a>
-          <h1>{{listthing.price}}</h1>
-          <h1>{{listthing.num_bedroom}}</h1>
-          <h1>{{listthing.num_bathroom}}</h1>
-          <h1>{{listthing.square_footage}}</h1>
-          <h1>{{listthing.address}}</h1>
 
-          {% endfor %}
+    <nav class="navbar">
+        <h1 class="logo">Personal</h1>
+        <ul class="nav-links">
+            <li class="active"><a href="#" ></a>Home</li>
+            <li><a href="#"></a>Tours</li>
+            <li><a href="#"></a>Explore</li>
+            <li><a href="#"></a>About</li>
+            <li class="ctn"><a href="#" ></a>Contect</li>
+
+        </ul>
+        <img class="menu-btn" src="{% static 'image/menu-bar.jpg'%}" alt="">
+    </nav>
+    <header style="background-image: url('{% static 'image/index.jpg' %}');">
+        <div class="header-content">
+            <h2>Explore The Colorful World</h2>
+            <div class="line"></div>
+            <h1>A WONDERFUL GIFT</h1>
+            <a href="#" class="ctn">Learn More</a>
+        </div> 
+    </header>
+
+    <script>
+        const menuBtn=document.querySelector('.menu-btn')
+        const navlinks=document.querySelector('.nav-links')
+
+        menuBtn.addEventListener('click',()=>{
+            navlinks.classList.toggle('mobile-menu')
+        })
+    </script>
 </body>
 </html>
