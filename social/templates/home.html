@@ -1,42 +1,54 @@
+{% extends 'main/nav.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/main.css/' %}">
-    <title>Navbar</title>
-</head>
-<body>
+{% block content %}
 
-    <nav class="navbar">
-        <h1 class="logo">Personal</h1>
-        <ul class="nav-links">
-            <li class="active"><a href="#" ></a>Home</li>
-            <li><a href="#"></a>Tours</li>
-            <li><a href="#"></a>Explore</li>
-            <li><a href="#"></a>About</li>
-            <li class="ctn"><a href="#" ></a>Contect</li>
-
-        </ul>
-        <img class="menu-btn" src="{% static 'image/menu-bar.jpg'%}" alt="">
-    </nav>
-    <header style="background-image: url('{% static 'image/index.jpg' %}');">
-        <div class="header-content">
-            <h2>Explore The Colorful World</h2>
+    <section class="events">
+        <div class="title">
+            <h1>Upcoming Events</h1>
             <div class="line"></div>
-            <h1>A WONDERFUL GIFT</h1>
-            <a href="#" class="ctn">Learn More</a>
-        </div> 
-    </header>
+        </div>
+            <div class="row">
+                {% for photo in photoes %}
+                <div class="col-sm-6 col mt-5">
+                    <a href="{% url 'detailpage' photo.id %}"><img src="{{photo.image.url}}" class="img-thumbnail" alt=""></a>
+                    <a href="{% url 'detailpage' photo.id %}"><h4>{{photo.title}}</h4></a>
+                    <a href="{% url 'detailpage' photo.id %}"><p>{{photo.discription}}</p></a>
+                    <a href="{% url 'detailpage' photo.id %}"><p><strong><i class="fa-solid fa-clock"></i>&nbsp;&nbsp;{{photo.created|timesince}} ago</strong></p></a>
+                     <a href="" class="ctn">View More</a>
+                    </div>
+                 {% endfor %}
+                </div>
+    </section>
+    
+    {% for explore in explores %}
+    <section class="explore" style="background-image:url('{{explore.image.url}}') ;">
+        <div class="explore-content">
+            <h1>EXPLORE THE WORLD</h1>
+            <div class="line"></div>
+            <P>Lorem ipsum, dolor sit amet consectetur s obcaecati est facilis mollitia ipsa nostrum praesentium eos.</P>
+            <a href="{% url 'detailpage' explore.id %}" class="ctn">View More</a>
+        </div>
+    </section>
+    {% endfor %}
+    <section class="tours">
+        <div class="row">
+            <div class="col col content-col" style="width: 50%;">
+                <h1>UPCOMING & TOURS AND DESTINATION</h1>
+                <div class="line"></div>
+                <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium officinisi alias ab tempora voluptates dolore quisquam, </P>
+                <a href="" class="ctn">View More</a>
+            </div>
+            <div class="col img-col">
+                <div class="img-gallery">
+                    <img src="{% static 'image/t3.jpg'%}" alt="">
+                    <img src="{% static 'image/t4.jpg'%}" alt="">
+                    <img src="{% static 'image/t5.jpg'%}" alt="">
+                    <img src="{% static 'image/t6.jpg'%}" alt="">
+                    
+                </div>
+            </div>
+        </div>
 
-    <script>
-        const menuBtn=document.querySelector('.menu-btn')
-        const navlinks=document.querySelector('.nav-links')
+    </section>
 
-        menuBtn.addEventListener('click',()=>{
-            navlinks.classList.toggle('mobile-menu')
-        })
-    </script>
-</body>
-</html>
+{% endblock content %}
